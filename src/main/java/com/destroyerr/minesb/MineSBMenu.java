@@ -2,6 +2,7 @@ package com.destroyerr.minesb;
 
 import com.destroyerr.minesb.esp.*;
 import com.destroyerr.minesb.module.*;
+import com.destroyerr.minesb.module.Module;   // ← açık import
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
@@ -27,7 +28,7 @@ public class MineSBMenu extends Screen {
         int top = 26;
         int w = 260, h = 20, gap = 22;
 
-        for (Module m : ModuleManager.MODULES) {
+        for (com.destroyerr.minesb.module.Module m : ModuleManager.MODULES) {
             this.addDrawableChild(ButtonWidget.builder(label(m), b -> { m.toggle(); b.setMessage(label(m)); })
                     .dimensions(cx - w / 2, top, w, h).build());
             top += gap;
@@ -82,7 +83,7 @@ public class MineSBMenu extends Screen {
         rebuildBlockButtons();
     }
 
-    private Text label(Module m) {
+    private Text label(com.destroyerr.minesb.module.Module m) {
         return Text.literal((m.isEnabled() ? "§a" : "§c") + m.getName() + (m.isEnabled() ? " AÇIK" : " KAPALI"));
     }
     private BlockESP getBlockESP() {
