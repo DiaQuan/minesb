@@ -26,7 +26,7 @@ public final class Renderer {
         RenderSystem.defaultBlendFunc();
         RenderSystem.disableCull();
         RenderSystem.depthMask(false);
-        RenderSystem.setShader(GameRenderer::getPositionColorProgram);
+        // 1.21.4: shader programı RenderPipelines üzerinden gelir, manuel setShader gerekmez
 
         Tessellator tess = Tessellator.getInstance();
         BufferBuilder bb = tess.begin(VertexFormat.DrawMode.DEBUG_LINES, VertexFormats.POSITION_COLOR);
@@ -38,7 +38,9 @@ public final class Renderer {
             }
         }
 
-        tess.draw();
+        // 1.21.4: tess.draw() yok → BufferRenderer.drawWithGlobalProgram
+        BufferRenderer.drawWithGlobalProgram(bb.end());
+
         RenderSystem.depthMask(true);
         RenderSystem.enableCull();
         RenderSystem.disableBlend();
