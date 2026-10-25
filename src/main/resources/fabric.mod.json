@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "minesb",
+  "version": "${version}",
+  "name": "MineSB Ultra",
+  "description": "Ultra ESP paketi: Block/Tunnel/Player/Storage/Mob/Item/Projectile ESP + XRay + SpeedMine + FullBright",
+  "authors": ["destroyerr1558"],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["com.destroyerr.minesb.MineSBClient"]
+  },
+  "mixins": [
+    "minesb.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": ">=1.21",
+    "fabric-api": "*",
+    "java": ">=21"
+  }
+}
